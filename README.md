@@ -1,5 +1,3 @@
-# README.md
-
 # Financial Goals App
 
 ## Overview
