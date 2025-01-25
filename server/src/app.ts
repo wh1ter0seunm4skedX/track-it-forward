@@ -1,19 +1,22 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import cors from 'cors';
-import goalRoutes from './routes/goals';
+import dotenv from 'dotenv';
+import { createGoal, updateGoal, getGoals, deleteGoal } from './controllers/goalController';
+
+dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
-// Middleware
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
 // Routes
-app.use('/api/goals', goalRoutes);
+app.post('/api/goals', createGoal);
+app.put('/api/goals/:id', updateGoal);
+app.get('/api/goals', getGoals);
+app.delete('/api/goals/:id', deleteGoal);
 
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
