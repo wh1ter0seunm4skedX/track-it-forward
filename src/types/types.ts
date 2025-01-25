@@ -1,3 +1,6 @@
+export type Priority = 'low' | 'medium' | 'high';
+export type Category = 'savings' | 'investment' | 'purchase' | 'travel' | 'education' | 'other';
+
 export interface Goal {
   id: string;
   name: string;
@@ -10,8 +13,6 @@ export interface Goal {
   image_url: string;
 }
 
-export type GoalFormData = Omit<Goal, 'id' | 'created_at' | 'updated_at'>;
-
-export type SortOption = 'progress' | 'target-date' | 'amount';
-
-export type FilterOption = 'all' | 'active' | 'completed';
+export type GoalFormData = Omit<Goal, 'id' | 'created_at' | 'updated_at' | 'current_amount'>;
+export type SortOption = 'progress' | 'target-date' | 'amount' | 'priority';
+export type FilterOption = 'all' | 'active' | 'completed' | Category;
